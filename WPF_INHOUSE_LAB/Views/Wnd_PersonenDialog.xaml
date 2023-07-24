@@ -13,8 +13,12 @@
         Style="{StaticResource Sty_Wnd}"
         Title="Personendialog">
 
+    <Window.DataContext>
+        <model:Person Geschlecht="Weiblich"/>
+    </Window.DataContext>
+
     <Window.Resources>
-     
+        <converter:GenderToBoolConverter x:Key="enum2bool"/>
     </Window.Resources>
 
     <Grid x:Name="Grd_Main" Margin="10">
@@ -52,21 +56,26 @@
                        VerticalAlignment="Top"/>
 
         <TextBox x:Name="Tbx_Vorname"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 Text="{Binding Vorname}"/>
 
         <TextBox x:Name="Tbx_Nachname"
-                 Grid.Column="1" Grid.Row="1"/>
+                 Grid.Column="1" Grid.Row="1"
+                 Text="{Binding Nachname}"/>
 
         <DatePicker x:Name="Dpr_Geburtsdatum"
-                    Grid.Column="1" Grid.Row="2"/>
+                    Grid.Column="1" Grid.Row="2"
+                    SelectedDate="{Binding Geburtsdatum}"/>
 
         <CheckBox x:Name="Cbx_Verheiratet"
-                  Grid.Column="1" Grid.Row="3"/>
+                  Grid.Column="1" Grid.Row="3"
+                  IsChecked="{Binding Verheiratet}"/>
 
         <ComboBox x:Name="Cbb_Lieblingsfarbe"
                   Grid.Column="1" Grid.Row="4"
                   VerticalAlignment="Center"
-                  Margin="2">
+                  Margin="2"
+                  SelectedItem="{Binding Lieblingsfarbe}">
             <ComboBoxItem Content="Grün" Foreground="Green"/>
             <ComboBoxItem Content="Blau" Foreground="Blue"/>
             <ComboBoxItem Content="Rot" Foreground="Red"/>
@@ -76,11 +85,14 @@
         <StackPanel x:Name="Spl_Geschlecht" Margin="2"
                     Grid.Column="1" Grid.Row="5">
             <RadioButton Content="Männlich"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Männlich}}"/>
             <RadioButton Content="Weiblich"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Weiblich}}"/>
             <RadioButton Content="Divers"
-                         GroupName="Rbg_Gender"/>
+                         GroupName="Rbg_Gender"
+                         IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Divers}}"/>
         </StackPanel>
 
         <WrapPanel x:Name="Wpl_Buttons" 

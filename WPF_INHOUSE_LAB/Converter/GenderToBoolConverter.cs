@@ -16,11 +16,6 @@ namespace WPF_InhouseLab.Converter
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (bool)value ? parameter : Binding.DoNothing;
-
-            if ((bool)value)
-                return parameter;
-            else
-                return Binding.DoNothing;
         }
     }
 }
