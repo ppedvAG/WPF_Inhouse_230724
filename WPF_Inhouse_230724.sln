@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01_ColorPicker_Lab", "Colo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02ff_Personendatenbank", "WPF_INHOUSE_LAB\L02ff_Personendatenbank.csproj", "{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBinding", "DataBinding\DataBinding.csproj", "{AE27B437-0468-46FC-9FE5-EF6769B59AF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M02_DataBinding", "DataBinding\M02_DataBinding.csproj", "{AE27B437-0468-46FC-9FE5-EF6769B59AF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
