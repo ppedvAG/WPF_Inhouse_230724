@@ -23,7 +23,7 @@ namespace WPF_InhouseLab.Views
     /// </summary>
     public partial class Wnd_PersonenDialog : Window
     {
-        
+
         public Wnd_PersonenDialog()
         {
             InitializeComponent();
@@ -41,7 +41,50 @@ namespace WPF_InhouseLab.Views
             }
         }
 
-        private void Btn_Abbruch_Click(object sender, RoutedEventArgs e) 
+        private void Btn_Abbruch_Click(object sender, RoutedEventArgs e)
             => this.Close();
+
+        private void Mit_Deutsch_Click(object sender, RoutedEventArgs e) => ÄndereSprache("de-DE");
+
+        private void Mit_Englisch_Click(object sender, RoutedEventArgs e) => ÄndereSprache("en-US");
+
+        private void ÄndereSprache(string cultureCode)
+        {
+            if (Thread.CurrentThread.CurrentUICulture.Name != cultureCode)
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(cultureCode);
+
+                //this.GetBindingExpression(Window.TitleProperty).UpdateTarget();
+                //Mit_Sprache.GetBindingExpression(MenuItem.HeaderProperty).UpdateTarget();
+                //Mit_Deutsch.GetBindingExpression(MenuItem.HeaderProperty).UpdateTarget();
+                //Mit_Englisch.GetBindingExpression(MenuItem.HeaderProperty).UpdateTarget();
+
+
+
+                //foreach (var item in Grd_Main.Children)
+                //    (item as TextBlock)?.GetBindingExpression(TextBlock.TextProperty).UpdateTarget();
+
+                //foreach (var item in Wpl_Buttons.Children)
+                //    (item as Button)?.GetBindingExpression(Button.ContentProperty).UpdateTarget();
+
+                //foreach (var item in Spl_Geschlecht.Children)
+                //    if (item is RadioButton) (item as RadioButton).GetBindingExpression(RadioButton.ContentProperty).UpdateTarget();
+
+                //DataTemplate dt = Cbb_Lieblingsfarbe.ItemTemplate;
+                //int index = Cbb_Lieblingsfarbe.SelectedIndex;
+
+                //Cbb_Lieblingsfarbe.SelectedIndex = 0;
+                //Cbb_Lieblingsfarbe.ItemTemplate = null;
+
+                //Cbb_Lieblingsfarbe.ItemTemplate = dt;
+                //Cbb_Lieblingsfarbe.SelectedIndex = index;
+
+
+                Window newWnd = new Wnd_PersonenDialog() { DataContext = this.DataContext };
+                newWnd.Show();
+
+                this.Close();
+            }
+        }
     }
 }

@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:WPF_InhouseLab.Views"
         xmlns:model="clr-namespace:WPF_InhouseLab.Model"
         xmlns:converter="clr-namespace:WPF_InhouseLab.Converter"
+        xmlns:loc="clr-namespace:WPF_InhouseLab.Ressources.Loc"
         mc:Ignorable="d"
         SizeToContent="Height" 
         Width="285" ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" Topmost="True"
         Style="{StaticResource Sty_Wnd}"
-        Title="Personendialog">
+        Title="{Binding Path=(loc:PersonenDialog_Strings.Wnd_Title)}">
 
     <Window.DataContext>
         <model:Person Geschlecht="Weiblich" Lieblingsfarbe="Red"/>
@@ -32,102 +33,119 @@
         </x:Array>
 
         <converter:ColorToBrushConverter x:Key="color2brush"/>
+        <loc:ColorLocalisationConverter x:Key="colorLocal"/>
 
     </Window.Resources>
 
-    <Grid x:Name="Grd_Main" Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top"
+              Background="{x:Null}">
+            <MenuItem x:Name="Mit_Sprache"
+                      Header="{Binding Path=(loc:PersonenDialog_Strings.Mit_Sprache_Header)}">
+                <MenuItem x:Name="Mit_Deutsch"
+                          Header="{Binding Path=(loc:PersonenDialog_Strings.Mit_Deutsch_Header)}"
+                          Click="Mit_Deutsch_Click"/>
+                <MenuItem x:Name="Mit_Englisch"
+                          Header="{Binding Path=(loc:PersonenDialog_Strings.Mit_Englisch_Header)}"
+                          Click="Mit_Englisch_Click"/>
+            </MenuItem>
+        </Menu>
 
-        <TextBlock x:Name="Tbl_Vorname" 
-                       Text="Vorname"/>
-        <TextBlock x:Name="Tbl_Nachname" 
-                       Text="Nachname" 
+        <Grid x:Name="Grd_Main" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="Tbl_Vorname" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Vorname_Text)}"/>
+            <TextBlock x:Name="Tbl_Nachname" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Nachname_Text)}" 
                        Grid.Row="1"/>
-        <TextBlock x:Name="Tbl_Geburtsdatum" 
-                       Text="Geburtsdatum" 
+            <TextBlock x:Name="Tbl_Geburtsdatum" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Geburtsdatum_Text)}" 
                        Grid.Row="2"/>
-        <TextBlock x:Name="Tbl_Verheiratet" 
-                       Text="Verheiratet" 
+            <TextBlock x:Name="Tbl_Verheiratet" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Verheiratet_Text)}" 
                        Grid.Row="3"/>
-        <TextBlock x:Name="Tbl_Lieblingsfarbe" 
-                       Text="Lieblingsfarbe" 
+            <TextBlock x:Name="Tbl_Lieblingsfarbe" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Lieblingsfarbe_Text)}" 
                        Grid.Row="4"/>
-        <TextBlock x:Name="Tbl_Geschlecht" 
-                       Text="Geschlecht" 
+            <TextBlock x:Name="Tbl_Geschlecht" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Geschlecht_Text)}" 
                        Grid.Row="5"
                        VerticalAlignment="Top"/>
 
-        <TextBox x:Name="Tbx_Vorname"
+            <TextBox x:Name="Tbx_Vorname"
                  Grid.Column="1"
                  Text="{Binding Vorname}"/>
 
-        <TextBox x:Name="Tbx_Nachname"
+            <TextBox x:Name="Tbx_Nachname"
                  Grid.Column="1" Grid.Row="1"
                  Text="{Binding Nachname}"/>
 
-        <DatePicker x:Name="Dpr_Geburtsdatum"
+            <DatePicker x:Name="Dpr_Geburtsdatum"
                     Grid.Column="1" Grid.Row="2"
-                    SelectedDate="{Binding Geburtsdatum}"/>
+                    SelectedDate="{Binding Geburtsdatum, StringFormat='(0:mm/DD/yyyy)'}"/>
 
-        <CheckBox x:Name="Cbx_Verheiratet"
+            <CheckBox x:Name="Cbx_Verheiratet"
                   Grid.Column="1" Grid.Row="3"
                   IsChecked="{Binding Verheiratet}"/>
 
-        <ComboBox x:Name="Cbb_Lieblingsfarbe"
+            <ComboBox x:Name="Cbb_Lieblingsfarbe"
                   Grid.Column="1" Grid.Row="4"
                   VerticalAlignment="Center"
                   Margin="2"
                   SelectedItem="{Binding Lieblingsfarbe}"
                   ItemsSource="{StaticResource favColors}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type Color}">
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="Black" BorderThickness="1" Width="20" Height="20" Margin="5,0">
-                            <Rectangle Width="20" Height="20" Fill="{Binding Converter={StaticResource color2brush}}"/>
-                        </Border>
-                        <TextBlock Text="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type Color}">
+                        <StackPanel Orientation="Horizontal">
+                            <Border BorderBrush="Black" BorderThickness="1" Width="20" Height="20" Margin="5,0">
+                                <Rectangle Width="20" Height="20" Fill="{Binding Converter={StaticResource color2brush}}"/>
+                            </Border>
+                            <TextBlock Text="{Binding Converter={StaticResource colorLocal}, ConverterParameter={StaticResource favColors}}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
 
-        <StackPanel x:Name="Spl_Geschlecht" Margin="2"
+            <StackPanel x:Name="Spl_Geschlecht" Margin="2"
                     Grid.Column="1" Grid.Row="5">
-            <RadioButton Content="Männlich"
+                <RadioButton Content="{Binding Path=(loc:PersonenDialog_Strings.Rbt_M_Content)}"
                          GroupName="Rbg_Gender"
                          IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Männlich}}"/>
-            <RadioButton Content="Weiblich"
+                <RadioButton Content="{Binding Path=(loc:PersonenDialog_Strings.Rbt_W_Content)}"
                          GroupName="Rbg_Gender"
                          IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Weiblich}}"/>
-            <RadioButton Content="Divers"
+                <RadioButton Content="{Binding Path=(loc:PersonenDialog_Strings.Rbt_D_Content)}"
                          GroupName="Rbg_Gender"
                          IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Divers}}"/>
-        </StackPanel>
 
-        <WrapPanel x:Name="Wpl_Buttons" 
+            </StackPanel>
+
+            <WrapPanel x:Name="Wpl_Buttons" 
                        Grid.Row="7" Grid.ColumnSpan="2"
                        HorizontalAlignment="Right" Margin="0,5">
-            <Button x:Name="Btn_Ok"
-                    Content="OK"
+                <Button x:Name="Btn_Ok"
+                    Content="{Binding Path=(loc:PersonenDialog_Strings.Btn_Ok_Content)}"
                     Click="Btn_Ok_Click"/>
-            <Button x:Name="Btn_Abbruch"
-                    Content="Abbruch"
+                <Button x:Name="Btn_Abbruch"
+                    Content="{Binding Path=(loc:PersonenDialog_Strings.Btn_Abbruch_Content)}"
                     Click="Btn_Abbruch_Click"/>
-        </WrapPanel>
-    </Grid>
-
+            </WrapPanel>
+        </Grid>
+    </DockPanel>
 </Window>
 

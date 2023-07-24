@@ -7,4 +7,22 @@
     <RootNamespace>WPF_InhouseLab</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Ressources\Loc\PersonenDialog_Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PersonenDialog_Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Ressources\Loc\PersonenDialog_Strings.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Ressources\Loc\PersonenDialog_Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PersonenDialog_Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
