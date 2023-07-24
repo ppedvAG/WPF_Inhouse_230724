@@ -1,0 +1,99 @@
+﻿<Window x:Class="WPF_InhouseLab.Views.Wnd_PersonenDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_InhouseLab.Views"
+        xmlns:model="clr-namespace:WPF_InhouseLab.Model"
+        xmlns:converter="clr-namespace:WPF_InhouseLab.Converter"
+        mc:Ignorable="d"
+        SizeToContent="Height" 
+        Width="285" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" Topmost="True"
+        Style="{StaticResource Sty_Wnd}"
+        Title="Personendialog">
+
+    <Window.Resources>
+     
+    </Window.Resources>
+
+    <Grid x:Name="Grd_Main" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="Tbl_Vorname" 
+                       Text="Vorname"/>
+        <TextBlock x:Name="Tbl_Nachname" 
+                       Text="Nachname" 
+                       Grid.Row="1"/>
+        <TextBlock x:Name="Tbl_Geburtsdatum" 
+                       Text="Geburtsdatum" 
+                       Grid.Row="2"/>
+        <TextBlock x:Name="Tbl_Verheiratet" 
+                       Text="Verheiratet" 
+                       Grid.Row="3"/>
+        <TextBlock x:Name="Tbl_Lieblingsfarbe" 
+                       Text="Lieblingsfarbe" 
+                       Grid.Row="4"/>
+        <TextBlock x:Name="Tbl_Geschlecht" 
+                       Text="Geschlecht" 
+                       Grid.Row="5"
+                       VerticalAlignment="Top"/>
+
+        <TextBox x:Name="Tbx_Vorname"
+                 Grid.Column="1"/>
+
+        <TextBox x:Name="Tbx_Nachname"
+                 Grid.Column="1" Grid.Row="1"/>
+
+        <DatePicker x:Name="Dpr_Geburtsdatum"
+                    Grid.Column="1" Grid.Row="2"/>
+
+        <CheckBox x:Name="Cbx_Verheiratet"
+                  Grid.Column="1" Grid.Row="3"/>
+
+        <ComboBox x:Name="Cbb_Lieblingsfarbe"
+                  Grid.Column="1" Grid.Row="4"
+                  VerticalAlignment="Center"
+                  Margin="2">
+            <ComboBoxItem Content="Grün" Foreground="Green"/>
+            <ComboBoxItem Content="Blau" Foreground="Blue"/>
+            <ComboBoxItem Content="Rot" Foreground="Red"/>
+            <ComboBoxItem Content="Gelb" Foreground="Yellow"/>
+        </ComboBox>
+
+        <StackPanel x:Name="Spl_Geschlecht" Margin="2"
+                    Grid.Column="1" Grid.Row="5">
+            <RadioButton Content="Männlich"
+                         GroupName="Rbg_Gender"/>
+            <RadioButton Content="Weiblich"
+                         GroupName="Rbg_Gender"/>
+            <RadioButton Content="Divers"
+                         GroupName="Rbg_Gender"/>
+        </StackPanel>
+
+        <WrapPanel x:Name="Wpl_Buttons" 
+                       Grid.Row="7" Grid.ColumnSpan="2"
+                       HorizontalAlignment="Right" Margin="0,5">
+            <Button x:Name="Btn_Ok"
+                    Content="OK"
+                    Click="Btn_Ok_Click"/>
+            <Button x:Name="Btn_Abbruch"
+                    Content="Abbruch"
+                    Click="Btn_Abbruch_Click"/>
+        </WrapPanel>
+    </Grid>
+
+</Window>
+

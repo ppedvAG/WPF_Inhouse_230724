@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Media;
 
-namespace PropertyBinding
+namespace WPF_InhouseLab.Converter
 {
-    internal class DoubleToBrushConverter : IValueConverter
+    public class GenderToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new SolidColorBrush(Color.FromRgb(System.Convert.ToByte(value), 0, 0));
+            return value.Equals(parameter);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return (bool)value ? parameter : Binding.DoNothing;
+
+            if ((bool)value)
+                return parameter;
+            else
+                return Binding.DoNothing;
         }
     }
 }

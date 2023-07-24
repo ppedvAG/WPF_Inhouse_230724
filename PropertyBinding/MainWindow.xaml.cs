@@ -25,9 +25,11 @@ namespace PropertyBinding
             InitializeComponent();
         }
 
-        private void Btn_Ok_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BindingExpression be = Tbx_Input_02.GetBindingExpression(TextBox.TextProperty);
+            //Für die explizite Aktualisierung muss eine BindingExpression im CodeBehind erstellt werden und über die Methode UpdateSource() angefordert werden
+            //Die BindingExpession wird per Übergabe der (statischen) DependencyProperty an die Methode GetBindingExpression() aus dem bindenen Objekt erhalten
+            BindingExpression be = Tbx_Vier.GetBindingExpression(TextBox.TextProperty);
             be.UpdateSource();
 
         }

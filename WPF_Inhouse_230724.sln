@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyBinding", "WPF_Inhouse_230724\PropertyBinding.csproj", "{C6FFE66D-8F3B-47D5-9BBB-5DBEA2E0DD24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M01_PropertyBinding", "PropertyBinding\M01_PropertyBinding.csproj", "{5CB8C060-C916-40C5-8DEA-A0C8CEDD1648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01_ColorPicker_Lab", "ColorPicker_Lab\L01_ColorPicker_Lab.csproj", "{C41438CA-4A12-4880-8834-B71EF8713278}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02ff_Personendatenbank", "WPF_INHOUSE_LAB\L02ff_Personendatenbank.csproj", "{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C6FFE66D-8F3B-47D5-9BBB-5DBEA2E0DD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6FFE66D-8F3B-47D5-9BBB-5DBEA2E0DD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6FFE66D-8F3B-47D5-9BBB-5DBEA2E0DD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6FFE66D-8F3B-47D5-9BBB-5DBEA2E0DD24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB8C060-C916-40C5-8DEA-A0C8CEDD1648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB8C060-C916-40C5-8DEA-A0C8CEDD1648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB8C060-C916-40C5-8DEA-A0C8CEDD1648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB8C060-C916-40C5-8DEA-A0C8CEDD1648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C41438CA-4A12-4880-8834-B71EF8713278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C41438CA-4A12-4880-8834-B71EF8713278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C41438CA-4A12-4880-8834-B71EF8713278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C41438CA-4A12-4880-8834-B71EF8713278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F6C1414-6EBE-4DE9-B5B7-6F5A4EB7D42C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
