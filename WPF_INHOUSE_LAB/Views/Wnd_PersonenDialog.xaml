@@ -14,11 +14,25 @@
         Title="Personendialog">
 
     <Window.DataContext>
-        <model:Person Geschlecht="Weiblich"/>
+        <model:Person Geschlecht="Weiblich" Lieblingsfarbe="Red"/>
     </Window.DataContext>
 
     <Window.Resources>
         <converter:GenderToBoolConverter x:Key="enum2bool"/>
+
+        <x:Array Type="{x:Type Color}" x:Key="favColors">
+            <Color>Green</Color>
+            <Color>Red</Color>
+            <Color>Blue</Color>
+            <Color>Yellow</Color>
+            <Color>Orange</Color>
+            <Color>Purple</Color>
+            <Color>Black</Color>
+            <Color>White</Color>
+        </x:Array>
+
+        <converter:ColorToBrushConverter x:Key="color2brush"/>
+
     </Window.Resources>
 
     <Grid x:Name="Grd_Main" Margin="10">
@@ -75,12 +89,20 @@
                   Grid.Column="1" Grid.Row="4"
                   VerticalAlignment="Center"
                   Margin="2"
-                  SelectedItem="{Binding Lieblingsfarbe}">
-            <ComboBoxItem Content="Grün" Foreground="Green"/>
-            <ComboBoxItem Content="Blau" Foreground="Blue"/>
-            <ComboBoxItem Content="Rot" Foreground="Red"/>
-            <ComboBoxItem Content="Gelb" Foreground="Yellow"/>
+                  SelectedItem="{Binding Lieblingsfarbe}"
+                  ItemsSource="{StaticResource favColors}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type Color}">
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="Black" BorderThickness="1" Width="20" Height="20" Margin="5,0">
+                            <Rectangle Width="20" Height="20" Fill="{Binding Converter={StaticResource color2brush}}"/>
+                        </Border>
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
+
 
         <StackPanel x:Name="Spl_Geschlecht" Margin="2"
                     Grid.Column="1" Grid.Row="5">
