@@ -8,11 +8,21 @@
         xmlns:loc="clr-namespace:Localisation.Loc"
         mc:Ignorable="d"
         Title="MainWindow" Height="221" Width="392">
+    <Window.Resources>
+        <local:EnumToStringConverter x:Key="EnumToStringConverter"/>
+    </Window.Resources>
+    
     <StackPanel>
         <!--An resx-Dateien wird über die x:Static-Bindung angebunden. Die resx-Dateien müssen
         auf public gesetzt werden, damit Xaml darauf zugreifen kann-->
         <TextBlock Text="{x:Static loc:Strings.Tbx_Text}" HorizontalAlignment="Center"/> 
         <TextBlock x:Name="Tbx_Test" Text="{Binding Path=(loc:Strings.Tbx_Text)}" HorizontalAlignment="Center"/>
         <Button Content="{x:Static loc:Strings.Btn_Content}" Click="Button_Click"/>
+
+        <!--Lokalisierung eines Enums als Itemssource (vgl. CodeBehind)-->
+        <ComboBox ItemsSource="{local:Enumerate {x:Type local:TestEnum}}"
+                  SelectedItem="{Binding SelectedEnumValue, Converter={StaticResource EnumToStringConverter}}" 
+                  SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBlock x:Name="Tbl_SelectedEnum"/>
     </StackPanel>
 </Window>

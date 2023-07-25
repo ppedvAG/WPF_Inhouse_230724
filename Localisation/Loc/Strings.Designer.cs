@@ -77,5 +77,41 @@ namespace Localisation.Loc {
                 return ResourceManager.GetString("Tbx_Text", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eins.
+        /// </summary>
+        public static string TestEnum_1 {
+            get {
+                return ResourceManager.GetString("TestEnum_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zwei.
+        /// </summary>
+        public static string TestEnum_2 {
+            get {
+                return ResourceManager.GetString("TestEnum_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drei.
+        /// </summary>
+        public static string TestEnum_3 {
+            get {
+                return ResourceManager.GetString("TestEnum_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vier.
+        /// </summary>
+        public static string TestEnum_4 {
+            get {
+                return ResourceManager.GetString("TestEnum_4", resourceCulture);
+            }
+        }
     }
 }

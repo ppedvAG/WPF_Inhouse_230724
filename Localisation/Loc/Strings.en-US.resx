@@ -123,4 +123,16 @@
   <data name="Tbx_Text" xml:space="preserve">
     <value>Today is a beautiful day</value>
   </data>
+  <data name="TestEnum_1" xml:space="preserve">
+    <value>One</value>
+  </data>
+  <data name="TestEnum_2" xml:space="preserve">
+    <value>Two</value>
+  </data>
+  <data name="TestEnum_3" xml:space="preserve">
+    <value>Three</value>
+  </data>
+  <data name="TestEnum_4" xml:space="preserve">
+    <value>Four</value>
+  </data>
 </root>
