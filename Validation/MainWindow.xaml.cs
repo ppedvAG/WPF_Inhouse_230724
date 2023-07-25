@@ -24,5 +24,10 @@ namespace Validation
         {
             InitializeComponent();
         }
+
+        private void colorpicker_PickedColorChanged(object sender, RoutedPropertyChangedEventArgs<SolidColorBrush> e)
+        {
+            this.Title = colorpicker.PickedColor.ToString();
+        }
     }
 }

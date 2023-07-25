@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Validation"
+        xmlns:uc="clr-namespace:UserControls;assembly=UserControls"
         mc:Ignorable="d"
         Title="MainWindow" Height="383" Width="379"
         WindowStartupLocation="CenterScreen"
@@ -48,7 +49,8 @@
         <local:Person/>
     </Window.DataContext>
 
-    <StackPanel Margin="5">
+    <StackPanel Margin="5"
+                Background="{Binding ElementName=colorpicker, Path=PickedColor}">
 
         <TextBox x:Name="Tbx_IpInput"
                  Validation.ErrorTemplate="{StaticResource Ctp_Error_02}">
@@ -78,6 +80,13 @@
                  Validation.ErrorTemplate="{StaticResource Ctp_Error_02}"
                  Text="{local:Validation {Binding ElementName=Tbl_IpOutput_2, Path=Text, UpdateSourceTrigger=PropertyChanged}, {StaticResource validationRules}}"/>
         <TextBlock x:Name="Tbl_IpOutput_2"/>
+
+        <!--Beispiel-Einbindung des UserControls aus M11_UserControls-->
+        <uc:ColorPicker x:Name="colorpicker" ShowRectangle="True"
+                        PickedColorChanged="colorpicker_PickedColorChanged">
+            <Button Content="Hallo" uc:ColorPicker.Count="4"/>
+        </uc:ColorPicker>
+
 
     </StackPanel>
 </Window>
