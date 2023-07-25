@@ -1,0 +1,79 @@
+﻿<Window x:Class="MultiThreading.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiThreading"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="377" Width="420">
+    <StackPanel>
+
+        <Button Click="Button_Click" Content="Count"/>
+        <TextBlock x:Name="Tbx_Counter"/>
+
+        <StackPanel x:Name="Spl_IsAsync">
+            <StackPanel.DataContext>
+                <local:AsyncDataSource/>
+            </StackPanel.DataContext>
+
+            <TextBlock Text="{Binding Slower, IsAsync=True}"/>
+            <TextBlock>
+                <TextBlock.Text>
+                    <PriorityBinding>
+                        <Binding Path="Slower" IsAsync="True"/>
+                        <Binding Path="Slow" IsAsync="True"/>
+                        <Binding Path="Fast"/>
+                    </PriorityBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
+        </StackPanel>
+
+        <StackPanel x:Name="Spl_TPL">
+            <Button x:Name="Btn_Slow_01" Content="Slow Action (freeze)" Click="Button_Click_1"/>
+            <TextBlock x:Name="Tbl_Slow_01"/>
+            
+            <Button x:Name="Btn_Slow_02" Content="Slow Action (Dispatcher)" Click="Button_Click_2"/>
+            <TextBlock x:Name="Tbl_Slow_02"/>
+           
+            <Button x:Name="Btn_Slow_03" Content="Slow Action (Dispatcher)" Click="Button_Click_3"/>
+            <TextBlock x:Name="Tbl_Slow_03"/>
+        </StackPanel>
+
+        <StackPanel x:Name="Spl_DispatcherBsp">
+
+            <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+                       HorizontalAlignment="Center">Dispatcher-Beispiel</TextBlock>
+
+            <Button x:Name="Btn_AskForWeatherForecast"
+                    Content="Fetch Forecast"
+                    Margin="2"
+                    Click="Btn_AskForWeatherForecast_Click"/>
+            <ProgressBar x:Name="Pgb_WaitForWeatherForecast" 
+                         Height="10"
+                         Margin="2"/>
+            <Label x:Name="Lbl_WeatherForecast" 
+                   HorizontalAlignment="Center"
+                   Margin="2"
+                   Content=""/>
+        </StackPanel>
+
+        <StackPanel x:Name="Spl_DispatcherTimer" Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+                       HorizontalAlignment="Center">DispatcherTimer-Beispiel</TextBlock>
+
+            <Button x:Name="Btn_StartTimer"
+                    Content="Start" Margin="2"
+                    Click="Btn_StartTimer_Click"/>
+            <TextBlock x:Name="Tbl_Timer" Margin="2"
+                       VerticalAlignment="Center"
+                       Width="100"
+                       TextAlignment="Center"/>
+            <Button x:Name="Btn_StopTimer"
+                    Content="Stop" Margin="2"
+                    Click="Btn_StopTimer_Click"/>
+        </StackPanel>
+
+    </StackPanel>
+</Window>
