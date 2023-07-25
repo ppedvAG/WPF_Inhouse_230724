@@ -33,6 +33,9 @@ namespace WPF_InhouseLab.Model
         private Gender geschlecht;
         public Gender Geschlecht { get => geschlecht; set { geschlecht = value; OnPropertyChanged(); } }
 
+        private int kinder;
+        public int Kinder { get => kinder; set { kinder = value; OnPropertyChanged(); } }
+
         public Person()
         {
             this.Geburtsdatum = DateTime.Now;
@@ -69,6 +72,10 @@ namespace WPF_InhouseLab.Model
 
                     case nameof(Lieblingsfarbe):
                         if (Lieblingsfarbe.ToString().Equals("#00000000")) return "Wählen Sie Ihre Lieblingsfarbe aus.";
+                        break;
+
+                    case nameof(Kinder):
+                        if (Kinder < 0) return "Dieser Wert muss mindestens '0' sein.";
                         break;
                 }
 

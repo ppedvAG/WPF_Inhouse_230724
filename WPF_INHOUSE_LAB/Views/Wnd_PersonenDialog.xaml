@@ -80,6 +80,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -101,6 +102,9 @@
                        Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Geschlecht_Text)}" 
                        Grid.Row="5"
                        VerticalAlignment="Top"/>
+            <TextBlock x:Name="Tbl_Kinder" 
+                       Text="{Binding Path=(loc:PersonenDialog_Strings.Tbl_Kinder_Text)}" 
+                       Grid.Row="6"/>
 
             <TextBox x:Name="Tbx_Vorname"
                      Grid.Column="1"
@@ -154,6 +158,12 @@
                          IsChecked="{Binding Geschlecht, Converter={StaticResource enum2bool}, ConverterParameter={x:Static model:Gender.Divers}}"/>
 
             </StackPanel>
+
+            <local:Uc_IntegerUpDown x:Name="Iud_Kinder" 
+                                 Grid.Row="6" Grid.Column="1" Margin="2"
+                                 Value="{Binding Kinder, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, ValidatesOnDataErrors=True}"
+                                 Validation.ErrorTemplate="{StaticResource Ctp_Error}"/>
+
 
             <WrapPanel x:Name="Wpl_Buttons" 
                        Grid.Row="7" Grid.ColumnSpan="2"
