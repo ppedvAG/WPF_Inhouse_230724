@@ -23,67 +23,135 @@ namespace MultiThreading
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
 
+            Btn_Reset_Click(null, null);
+
             InitializeTimer();
         }
 
-        int counter = 0;
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Btn_Reset_Click(object sender, RoutedEventArgs e)
         {
-            counter++;
-            Tbx_Counter.Text = counter.ToString();
+            //Reset aller Beispiele
+            Tbl_LongTaskWithFreeze.Text = "Not Started";
+            Tbl_LongTaskWithDispatcher.Text = "Not Started";
+            Tbl_LongTaskWithAsync.Text = "Not Started";
+            Tbl_LongTasksMulti.Text = "Not Started";
+
+            Tbl_ShortTask.Text = "Not Started";
+            Counter = 0;
+
+            Spl_PriorityBinding.DataContext = new AsyncDataSource();
+
+            timerCount = 0;
+            Tbl_Timer.Text = "Not Started";
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Btn_Slow_01.IsEnabled = false;
+        #region TPL-Beispiele
+        //Beispiele zur Verwendung der C#-TaskParallelLibrary
 
+
+        //Beispiel für schnelle Standartaktion (läuft im UI-Thread)
+        public int Counter { get; set; } = 0;
+        private void Btn_ShortTask_Click(object sender, RoutedEventArgs e)
+        {
+            Counter += 1;
+            Tbl_ShortTask.Text = Counter.ToString();
+        }
+
+        //Beispiel für langsame Standartaktion (läuft im UI-Thread und pausiert diesen -> UI friert ein)
+        private void Btn_LongTaskWithFreeze_Click(object sender, RoutedEventArgs e)
+        {
+            Btn_LongTaskWithFreeze.IsEnabled = false;
+
+            //Simulation einer länger andauernden Aktion (z.B. Serverabfrage, etc)
             Thread.Sleep(2000);
-            Tbl_Slow_01.Text = "TASK FINISHED";
+            Tbl_LongTaskWithFreeze.Text = "Long Task Completed";
 
-            Btn_Slow_01.IsEnabled = true;
+            Btn_LongTaskWithFreeze.IsEnabled = true;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        //Beispiel für die Verwendung der TPL unter Zuhilfenahme des WPF-Dispatchers
+        private void Btn_LongTaskWithDispatcher_Click(object sender, RoutedEventArgs e)
         {
-            Btn_Slow_02.IsEnabled = false;
+            Btn_LongTaskWithDispatcher.IsEnabled = false;
 
-
+            //Starten eines seperaten Tasks zur Ausführung der länger andauernden Aktion
+            //  -> friert die UI nicht ein
+            //  -> ABER: der neue Task darf nicht auf UI-Elemente zugreifen, da dies nur der UI-Thread darf
             var task = Task.Run(() =>
             {
-                Thread.Sleep(3000);
-                return "TASK FINISHED";
+                //Simulation der länger andauernden Aktion
+                Thread.Sleep(2000);
+                //Ergebniss, dass in der UI angezeigt werden soll
+                return "Long Task Completed";
             });
 
+            //Damit der Task doch auf UI-Elemente zugreifen kann, muss der Dispatcher
+            //(Element, mit freiem Zugriff auf UI-Thread) verwendet werden.
             task.ContinueWith(t =>
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Tbl_Slow_02.Text = t.Result;
-                    Btn_Slow_02.IsEnabled = true;
+                    Btn_LongTaskWithDispatcher.IsEnabled = true;
+                    Tbl_LongTaskWithDispatcher.Text = task.IsFaulted ? task.Exception.InnerException.Message : task.Result;
                 });
             });
         }
 
-        private async void Button_Click_3(object sender, RoutedEventArgs e)
+        //Alternativ zum Dispatcher kann eine Async-Methode verwendet werden. Diese pausiert bei Await-Befehlen, ohne
+        //den UI-Thread anzuhalten.
+        private async void Btn_LongTaskWithAsync_Click(object sender, RoutedEventArgs e)
         {
-            Btn_Slow_03.IsEnabled = false;
-
-            var taskResult = await Task.Run(() =>
+            Btn_LongTaskWithAsync.IsEnabled = false;
+            string taskResult = "";
+            try
             {
-                Thread.Sleep(3000);
-                return "TASK FINISHED";
-            });
-
-            Tbl_Slow_03.Text = taskResult;
-            Btn_Slow_03.IsEnabled = true;
+                taskResult = await Task.Run(() =>
+                {
+                    Thread.Sleep(2000);
+                    return "Long Task Completed";
+                });
+            }
+            catch (Exception ex)
+            {
+                taskResult = ex.Message;
+            }
+            Btn_LongTaskWithAsync.IsEnabled = true;
+            Tbl_LongTaskWithAsync.Text = taskResult;
         }
 
+        //Bsp für das Erwarten mehrerer Tasks
+        private async void Btn_LongTasksMulti_Click(object sender, RoutedEventArgs e)
+        {
+            Btn_LongTasksMulti.IsEnabled = false;
 
+            var task1 = Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+                return "Long Task 1 Completed";
+            });
+            var task2 = Task.Run(() =>
+            {
+                Thread.Sleep(3000);
+                return "Long Task 2 Completed";
+            });
+            var task3 = Task.Run(() =>
+            {
+                Thread.Sleep(4000);
+                return "Long Task 3 Completed";
+            });
+
+            var results = await Task.WhenAll(task1, task2, task3);
+
+            Tbl_LongTasksMulti.Text = $"{results[0]} - {results[1]} - {results[2]}";
+            Btn_LongTasksMulti.IsEnabled = true;
+        }
+
+        #endregion
 
         #region Längeres Dispather-Beispiel
 
@@ -99,6 +167,8 @@ namespace MultiThreading
             Task.Run(FetchWeatherFromServer);
 
         }
+
+        Random rand = new Random();
 
         private async void FetchWeatherFromServer()
         {
@@ -126,7 +196,18 @@ namespace MultiThreading
             double TEMP = double.Parse(temp);
 
             String weather = CheckWeatherCode(WC);
-            
+
+            // Simulation der Wetterabfrage (hier zufällig)
+            //if (rand.Next(0, 2) == 0)
+            //{
+            //    weather = "rainy";
+            //}
+            //else
+            //{
+            //    weather = "sunny";
+            //}
+
+
             // Schedule the update function in the UI thread.
             await this.Dispatcher.BeginInvoke
                 (
@@ -184,26 +265,28 @@ namespace MultiThreading
 
         #endregion
 
+        #region Dispatcher-Timer
 
         DispatcherTimer timer;
-
-        int timerCounter = 0;
+        int timerCount;
 
         private void InitializeTimer()
         {
+            timerCount = 0;
+
             timer = new DispatcherTimer();
 
             timer.Tick += (s, e) =>
             {
-                timerCounter++;
-                Tbl_Timer.Text = timerCounter.ToString();
+                timerCount++;
+                Tbl_Timer.Text = timerCount.ToString();
             };
-
             timer.Interval = TimeSpan.FromSeconds(1);
         }
 
         private void Btn_StartTimer_Click(object sender, RoutedEventArgs e) => timer.Start();
 
         private void Btn_StopTimer_Click(object sender, RoutedEventArgs e) => timer.Stop();
+        #endregion
     }
 }

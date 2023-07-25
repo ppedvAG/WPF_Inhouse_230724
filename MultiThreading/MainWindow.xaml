@@ -4,41 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MultiThreading"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="377" Width="420">
-    <StackPanel>
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Width="800"
+        SizeToContent="Height">
 
-        <Button Click="Button_Click" Content="Count"/>
-        <TextBlock x:Name="Tbx_Counter"/>
+    <StackPanel Margin="5">
+        <Button x:Name="Btn_Reset"
+                Content="Reset"
+                Click="Btn_Reset_Click"/>
 
-        <StackPanel x:Name="Spl_IsAsync">
+        <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+                       HorizontalAlignment="Center">TPL-Beispiele</TextBlock>
+
+        <Button x:Name="Btn_ShortTask"
+                Content="Short Running Task"
+                Click="Btn_ShortTask_Click"/>
+        <TextBlock x:Name="Tbl_ShortTask" HorizontalAlignment="Center"/>
+
+        <Button x:Name="Btn_LongTaskWithFreeze"
+                Content="Long Running Task (Freeze, wrong)"
+                Click="Btn_LongTaskWithFreeze_Click"/>
+        <TextBlock x:Name="Tbl_LongTaskWithFreeze" HorizontalAlignment="Center"/>
+
+        <Button x:Name="Btn_LongTaskWithDispatcher"
+                Content="Long Running Task (Dispatcher)"
+                Click="Btn_LongTaskWithDispatcher_Click"/>
+        <TextBlock x:Name="Tbl_LongTaskWithDispatcher" HorizontalAlignment="Center"/>
+
+        <Button x:Name="Btn_LongTaskWithAsync"
+                Content="Long Running Task (Async)"
+                Click="Btn_LongTaskWithAsync_Click"/>
+        <TextBlock x:Name="Tbl_LongTaskWithAsync" HorizontalAlignment="Center"/>
+
+        <Button x:Name="Btn_LongTasksMulti"
+                Content="Long Running Tasks (Multi)"
+                Click="Btn_LongTasksMulti_Click"/>
+        <TextBlock x:Name="Tbl_LongTasksMulti" HorizontalAlignment="Center"/>
+
+
+        <StackPanel x:Name="Spl_PriorityBinding"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel.DataContext>
                 <local:AsyncDataSource/>
             </StackPanel.DataContext>
 
-            <TextBlock Text="{Binding Slower, IsAsync=True}"/>
-            <TextBlock>
+            <TextBlock FontSize="18" FontWeight="Bold" Margin="10"
+                       HorizontalAlignment="Center">Priority Binding und IsAsync</TextBlock>
+
+            <TextBlock Text="{Binding SlowestDP, IsAsync=True, FallbackValue='Not Processed'}" Margin="2" HorizontalAlignment="Center"/>
+
+            <TextBlock HorizontalAlignment="Center" Margin="2">
                 <TextBlock.Text>
-                    <PriorityBinding>
-                        <Binding Path="Slower" IsAsync="True"/>
-                        <Binding Path="Slow" IsAsync="True"/>
-                        <Binding Path="Fast"/>
+                    <PriorityBinding FallbackValue="defaultvalue">
+                        <Binding Path="SlowestDP" IsAsync="True"/>
+                        <Binding Path="SlowerDP" IsAsync="True"/>
+                        <Binding Path="FastDP" />
                     </PriorityBinding>
                 </TextBlock.Text>
             </TextBlock>
 
         </StackPanel>
 
-        <StackPanel x:Name="Spl_TPL">
-            <Button x:Name="Btn_Slow_01" Content="Slow Action (freeze)" Click="Button_Click_1"/>
-            <TextBlock x:Name="Tbl_Slow_01"/>
-            
-            <Button x:Name="Btn_Slow_02" Content="Slow Action (Dispatcher)" Click="Button_Click_2"/>
-            <TextBlock x:Name="Tbl_Slow_02"/>
-           
-            <Button x:Name="Btn_Slow_03" Content="Slow Action (Dispatcher)" Click="Button_Click_3"/>
-            <TextBlock x:Name="Tbl_Slow_03"/>
-        </StackPanel>
 
         <StackPanel x:Name="Spl_DispatcherBsp">
 
