@@ -7,6 +7,8 @@
         xmlns:model="clr-namespace:WPF_InhouseLab.Model"
         xmlns:converter="clr-namespace:WPF_InhouseLab.Converter"
         xmlns:loc="clr-namespace:WPF_InhouseLab.Ressources.Loc"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:main="clr-namespace:WPF_InhouseLab"
         mc:Ignorable="d"
         SizeToContent="Height" 
         Width="285" ResizeMode="NoResize" 
@@ -170,7 +172,11 @@
                        HorizontalAlignment="Right" Margin="0,5">
                 <Button x:Name="Btn_Ok"
                     Content="{Binding Path=(loc:PersonenDialog_Strings.Btn_Ok_Content)}"
-                    Click="Btn_Ok_Click"/>
+                    Click="Btn_Ok_Click">
+                    <b:Interaction.Behaviors>
+                        <main:DisableIfFailedValidationBehavior/>
+                    </b:Interaction.Behaviors>
+                </Button>
                 <Button x:Name="Btn_Abbruch"
                     Content="{Binding Path=(loc:PersonenDialog_Strings.Btn_Abbruch_Content)}"
                     Click="Btn_Abbruch_Click"/>

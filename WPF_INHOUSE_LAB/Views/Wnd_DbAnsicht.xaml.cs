@@ -24,7 +24,8 @@ namespace WPF_InhouseLab.Views
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public List<Person> Personenliste { get; set; }
+        //public List<Person> Personenliste { get; set; }
+        public List<Person> Personenliste { get => dbController.GetPeople(); }
 
         private DbController dbController;
 
@@ -35,7 +36,7 @@ namespace WPF_InhouseLab.Views
 
             dbController = new DbController();
 
-            Personenliste = dbController.GetPeople();
+            //Personenliste = dbController.GetPeople();
 
             this.DataContext = this;
         }
@@ -50,27 +51,41 @@ namespace WPF_InhouseLab.Views
             Person person = Dgd_Personen.SelectedItem as Person;
 
             if (MessageBox.Show($"Soll diese Person wirklich gelöscht werden?", $"Person löschen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {                
-                dbController.RemovePerson(person);
+            {
+                var task = Task.Run(() =>
+                {
+                    dbController.RemovePerson(person);
+                });
 
-                Personenliste = dbController.GetPeople();
-                
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Personenliste)));
+                task.ContinueWith(t => Dispatcher.BeginInvoke(() => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Personenliste)))));
+                //Personenliste = dbController.GetPeople();
+
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Personenliste)));
             }
         }
 
-        private void Btn_Neu_Click(object sender, RoutedEventArgs e)
+        private async void Btn_Neu_Click(object sender, RoutedEventArgs e)
         {
             Wnd_PersonenDialog dialog = new Wnd_PersonenDialog();
 
             if (dialog.ShowDialog() == true)
             {
-                dbController.AddPerson(dialog.DataContext as Person);
+                Person person = dialog.DataContext as Person;
 
-                Personenliste = dbController.GetPeople();
+                await Task.Run(() =>
+                {
+                    //dbController.AddPerson(dialog.DataContext as Person);
+
+                    dbController.AddPerson(person);
+                });
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Personenliste)));
+
+                //Personenliste = dbController.GetPeople();
+
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Personenliste)));
             }
         }
     }
 }
+
