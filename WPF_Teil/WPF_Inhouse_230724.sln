@@ -15,13 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M03_Templates", "Templates\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M04_Localisation", "Localisation\M04_Localisation.csproj", "{32C1B012-AB03-4F15-9883-2E6273188ABD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M05_Validation", "Validation\M05_Validation.csproj", "{79B80105-3EA7-48C6-997A-7A9C9124AD00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M05_Validation", "Validation\M05_Validation.csproj", "{79B80105-3EA7-48C6-997A-7A9C9124AD00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "M06_UserControls", "UserControls\M06_UserControls.csproj", "{CB868DA7-7ADD-4F85-A698-5A227056ADAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M06_UserControls", "UserControls\M06_UserControls.csproj", "{CB868DA7-7ADD-4F85-A698-5A227056ADAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{86FF4ED6-A078-4560-930C-5DC0B7560091}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThreading", "MultiThreading\MultiThreading.csproj", "{86FF4ED6-A078-4560-930C-5DC0B7560091}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Behaviors", "Behaviors\Behaviors.csproj", "{85F51BE1-0839-42BC-8CB9-746BF2A69A94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behaviors", "Behaviors\Behaviors.csproj", "{85F51BE1-0839-42BC-8CB9-746BF2A69A94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
