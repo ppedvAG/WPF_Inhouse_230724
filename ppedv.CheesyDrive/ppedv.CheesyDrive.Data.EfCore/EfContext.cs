@@ -1,5 +1,7 @@
 ﻿using ppedv.CheesyDrive.Model;
+using System;
 using System.Data.Entity;
+using System.Reflection.Emit;
 
 namespace ppedv.CheesyDrive.Data.EfCore
 {
@@ -11,6 +13,11 @@ namespace ppedv.CheesyDrive.Data.EfCore
 
         public EfContext(string conString) : base(conString)
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Properties<DateTime>().Configure(p => p.HasColumnType("datetime2"));
         }
 
     }
