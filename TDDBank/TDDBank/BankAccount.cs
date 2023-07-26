@@ -13,6 +13,9 @@
 
         public void Withdraw(decimal v)
         {
+            if(v>100)
+                throw new ArgumentException();  
+
             if (v <= 0)
                 throw new ArgumentException();
 
