@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33913.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDBank", "TDDBank\TDDBank.csproj", "{5166BE94-508B-474D-86AA-51729687CB09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDBank.Tests", "TDDBank.Tests\TDDBank.Tests.csproj", "{BDBE4129-76AE-4899-8BF7-8B41B19582E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5166BE94-508B-474D-86AA-51729687CB09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5166BE94-508B-474D-86AA-51729687CB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5166BE94-508B-474D-86AA-51729687CB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5166BE94-508B-474D-86AA-51729687CB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDBE4129-76AE-4899-8BF7-8B41B19582E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDBE4129-76AE-4899-8BF7-8B41B19582E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDBE4129-76AE-4899-8BF7-8B41B19582E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDBE4129-76AE-4899-8BF7-8B41B19582E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78255452-2ECA-4FCE-8406-E56D35F9F51E}
+	EndGlobalSection
+EndGlobal
