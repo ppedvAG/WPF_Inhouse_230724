@@ -1,4 +1,7 @@
-﻿namespace ppedv.CheesyDrive.Model
+﻿using System;
+using System.Collections.Generic;
+
+namespace ppedv.CheesyDrive.Model
 {
     public class Customer : Entity
     {

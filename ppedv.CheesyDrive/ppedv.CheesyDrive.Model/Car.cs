@@ -1,4 +1,6 @@
-﻿namespace ppedv.CheesyDrive.Model
+﻿using System.Collections.Generic;
+
+namespace ppedv.CheesyDrive.Model
 {
     public class Car : Entity
     {

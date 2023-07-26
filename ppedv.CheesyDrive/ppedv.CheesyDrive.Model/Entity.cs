@@ -1,4 +1,6 @@
-﻿namespace ppedv.CheesyDrive.Model
+﻿using System;
+
+namespace ppedv.CheesyDrive.Model
 {
     public abstract class Entity
     {

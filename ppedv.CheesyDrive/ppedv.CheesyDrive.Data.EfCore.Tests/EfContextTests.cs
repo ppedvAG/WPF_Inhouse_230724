@@ -1,18 +1,22 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace ppedv.CheesyDrive.Data.EfCore.Tests
 {
+    [TestClass]
     public class EfContextTests
     {
         string conString = "Server=(localdb)\\mssqllocaldb;Database=CheesyDrive_Test;Trusted_Connection=true";
 
-        [Fact]
+        [TestMethod]
         public void Can_create_db()
         {
             var con = new EfContext(conString);
-            con.Database.EnsureDeleted();
+            if (con.Database.Exists())
+                con.Database.Delete();
 
-            var result = con.Database.EnsureCreated();
+            var result = con.Database.CreateIfNotExists();
 
-            Assert.True(result);
+            Assert.IsTrue(result);
         }
     }
 }
