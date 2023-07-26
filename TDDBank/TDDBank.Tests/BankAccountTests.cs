@@ -1,3 +1,5 @@
+using Microsoft.QualityTools.Testing.Fakes;
+
 namespace TDDBank.Tests
 {
     public class BankAccountTests
@@ -68,6 +70,30 @@ namespace TDDBank.Tests
             account.Deposit(10m);
 
             Assert.Throws<InvalidOperationException>(() => account.Withdraw(11m));
+        }
+
+        [Fact]
+        public void IsWeekend_Tests()
+        {
+            var account = new BankAccount();
+
+            using (ShimsContext.Create())
+            {
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 3); //mo
+                Assert.False(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 4); //di
+                Assert.False(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 5); //mi
+                Assert.False(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 6); //do
+                Assert.False(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 7); //fr
+                Assert.False(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 8); //sa
+                Assert.True(account.IsWeekend());
+                System.Fakes.ShimDateTime.NowGet = () => new DateTime(2000, 1, 9); //so
+                Assert.True(account.IsWeekend());
+            }
         }
     }
 }
