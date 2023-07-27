@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ppedv.CheesyDrive.UI.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace ppedv.CheesyDrive.UI.WPF.Views
         public CarView()
         {
             InitializeComponent();
+            DataContext = App.Current.Services.GetService<CarViewModel>();
         }
     }
 }

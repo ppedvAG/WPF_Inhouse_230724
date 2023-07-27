@@ -26,3 +26,6 @@ https://prismlibrary.com/docs/
 https://benruehl.github.io/adonis-ui/
 
 https://github.com/Fody/PropertyChanged
+
+https://learn.microsoft.com/de-de/dotnet/communitytoolkit/mvvm/
+
