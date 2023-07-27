@@ -2,6 +2,7 @@
 using ppedv.CheesyDrive.Model.DomainModel;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ppedv.CheesyDrive.UI.WPF.ViewModels
 {
@@ -16,7 +17,9 @@ namespace ppedv.CheesyDrive.UI.WPF.ViewModels
             repo = new Data.EfCore.EfRepository(conString);
 
             CarList = new List<Car>(repo.Query<Car>());
+            SaveCommand = new SaveCommand(repo);
         }
+        public ICommand SaveCommand { get; set; }
 
 
         public string PS
@@ -46,5 +49,6 @@ namespace ppedv.CheesyDrive.UI.WPF.ViewModels
         public List<Car> CarList { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }
