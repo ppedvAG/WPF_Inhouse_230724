@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ppedv.CheesyDrive.Model
+namespace ppedv.CheesyDrive.Model.DomainModel
 {
     public class Rent : Entity
     {

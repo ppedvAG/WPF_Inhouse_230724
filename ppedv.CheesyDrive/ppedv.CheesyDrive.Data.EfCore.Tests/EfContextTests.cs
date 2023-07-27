@@ -2,7 +2,7 @@ using AutoFixture;
 using AutoFixture.Kernel;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ppedv.CheesyDrive.Model;
+using ppedv.CheesyDrive.Model.DomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

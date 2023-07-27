@@ -1,7 +1,6 @@
-﻿using ppedv.CheesyDrive.Model;
+﻿using ppedv.CheesyDrive.Model.DomainModel;
 using System;
 using System.Data.Entity;
-using System.Reflection.Emit;
 
 namespace ppedv.CheesyDrive.Data.EfCore
 {

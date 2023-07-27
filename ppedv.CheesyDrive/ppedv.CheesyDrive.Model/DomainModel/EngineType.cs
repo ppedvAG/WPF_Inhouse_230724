@@ -1,4 +1,4 @@
-﻿namespace ppedv.CheesyDrive.Model
+﻿namespace ppedv.CheesyDrive.Model.DomainModel
 {
     public enum EngineType
     {

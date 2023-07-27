@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ppedv.CheesyDrive.Model
+namespace ppedv.CheesyDrive.Model.DomainModel
 {
     public class Car : Entity
     {
