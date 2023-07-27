@@ -17,4 +17,7 @@ https://www.microsoft.com/store/productid/9MX2V0TQT6RM?ocid=pdpshare
 Datenbanktool
 https://fishcodelib.com/index.htm
 
+
 https://fluentassertions.com/
+
+https://github.com/moq/moq
