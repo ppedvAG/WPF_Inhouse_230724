@@ -1,0 +1,18 @@
+Demo daten
+https://github.com/bchavez/Bogus
+
+Testdaten
+https://autofixture.github.io/#
+
+
+Testmutanten
+https://stryker-mutator.io/docs/stryker-net/introduction/
+
+SQL Profiler
+https://github.com/ststeiger/ExpressProfiler
+
+eSheep 64
+https://www.microsoft.com/store/productid/9MX2V0TQT6RM?ocid=pdpshare
+
+Datenbanktool
+https://fishcodelib.com/index.htm
