@@ -20,10 +20,10 @@ namespace ppedv.CheesyDrive.Logic.Core
         public IEnumerable<Car> GetAvailableCars()
         {
             // Get all cars from the repository
-            var allCars = repository.GetAll<Car>();
+            var allCars = repository.Query<Car>();
 
             // Get all ongoing rentals
-            var ongoingRentals = repository.GetAll<Rent>().Where(r => r.EndDate == null || r.EndDate > DateTime.Now);
+            var ongoingRentals = repository.Query<Rent>().Where(r => r.EndDate == null || r.EndDate > DateTime.Now);
 
             // Get the car IDs from ongoing rentals
             var unavailableCarIds = ongoingRentals.Select(r => r.Car.Id);

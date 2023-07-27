@@ -33,13 +33,13 @@ namespace ppedv.CheesyDrive.UI.TestConsole
             containerBuilder.Register(x => new EfRepository(conString)).As<IRepository>();
             var container = containerBuilder.Build();
 
-            var repo = container.Resolve<IRepository>();   
+            var repo = container.Resolve<IRepository>();
             var rentService = new RentService(repo);
 
 
-            foreach (var car in repo.GetAll<Car>())
+            foreach (var car in repo.Query<Car>().OrderBy(x => x.KW))
             {
-                Console.WriteLine($"{car.Manufacturer} {car.Model}");
+                Console.WriteLine($"{car.Manufacturer} {car.Model} {car.KW}");
             }
 
             Console.WriteLine("==== AVAILABLE =====");
