@@ -1,0 +1,40 @@
+﻿<adonisControls:AdonisWindow 
+        xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI" 
+        x:Class="ppedv.CheesyDrive.UI.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:ppedv.CheesyDrive.UI.WPF.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Datei">
+                <MenuItem Header="💾 Speichern"/>
+                <MenuItem Header="📂 Öffnen"/>
+                <Separator/>
+                <MenuItem Header="🚪 Exit"/>
+            </MenuItem>
+        </Menu>
+
+        <StatusBar Background="LimeGreen" Height="22" DockPanel.Dock="Bottom"/>
+
+        <TabControl>
+            <TabItem Header="🚗 Cars">
+                <views:CarView/>
+            </TabItem>
+            <TabItem Header="🧟 Customers">
+                <views:CustomerView/>
+            </TabItem>
+            <TabItem Header="📜 Rent">
+                <views:RentView/>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+
+</adonisControls:AdonisWindow>

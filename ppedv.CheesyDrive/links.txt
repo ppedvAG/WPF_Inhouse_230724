@@ -21,3 +21,8 @@ https://fishcodelib.com/index.htm
 https://fluentassertions.com/
 
 https://github.com/moq/moq
+
+https://prismlibrary.com/docs/
+https://benruehl.github.io/adonis-ui/
+
+https://github.com/Fody/PropertyChanged
