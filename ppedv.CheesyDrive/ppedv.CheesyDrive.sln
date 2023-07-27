@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CheesyDrive.Data.EfCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CheesyDrive.Data.EfCore.Tests", "ppedv.CheesyDrive.Data.EfCore.Tests\ppedv.CheesyDrive.Data.EfCore.Tests.csproj", "{60A38BCD-C427-4EDB-B098-54B086D4DDD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CheesyDrive.Logic.Core", "ppedv.CheesyDrive.Logic.Core\ppedv.CheesyDrive.Logic.Core.csproj", "{92D44185-9A7C-4D85-BAC0-41A2DA46E1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CheesyDrive.Logic.Core", "ppedv.CheesyDrive.Logic.Core\ppedv.CheesyDrive.Logic.Core.csproj", "{92D44185-9A7C-4D85-BAC0-41A2DA46E1F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CheesyDrive.UI.TestConsole", "ppedv.CheesyDrive.UI.TestConsole\ppedv.CheesyDrive.UI.TestConsole.csproj", "{851B5167-710E-4B7B-A771-C44B47D5CDF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CheesyDrive.Logic.Core.Tests", "ppedv.CheesyDrive.Logic.Core.Tests\ppedv.CheesyDrive.Logic.Core.Tests.csproj", "{B5C06064-13D4-4D3C-B26A-C01793F20014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CheesyDrive.UI.WPF", "ppedv.CheesyDrive.UI.WPF\ppedv.CheesyDrive.UI.WPF.csproj", "{B6391514-1A81-434F-BEA7-FF0470D5B637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CheesyDrive.UI.WPF", "ppedv.CheesyDrive.UI.WPF\ppedv.CheesyDrive.UI.WPF.csproj", "{B6391514-1A81-434F-BEA7-FF0470D5B637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CheesyDrive.UI.WPF.Tests", "ppedv.CheesyDrive.UI.WPF.Tests\ppedv.CheesyDrive.UI.WPF.Tests.csproj", "{370A4B18-CCB3-4F05-82E9-DBE08271467F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B6391514-1A81-434F-BEA7-FF0470D5B637}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6391514-1A81-434F-BEA7-FF0470D5B637}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6391514-1A81-434F-BEA7-FF0470D5B637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370A4B18-CCB3-4F05-82E9-DBE08271467F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370A4B18-CCB3-4F05-82E9-DBE08271467F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370A4B18-CCB3-4F05-82E9-DBE08271467F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370A4B18-CCB3-4F05-82E9-DBE08271467F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

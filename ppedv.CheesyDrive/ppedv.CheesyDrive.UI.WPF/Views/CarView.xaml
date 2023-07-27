@@ -14,7 +14,7 @@
         <WrapPanel DockPanel.Dock="Top" Margin="8">
             <Button>Laden</Button>
             <Button Command="{Binding SaveCommand}">Speichern</Button>
-            <Button Command="{Binding NewCommand}">Neu</Button>
+            <Button Command="{Binding NewCommand}" AutomationProperties.AutomationId="mp">Neu</Button>
             <Button>Löschen</Button>
         </WrapPanel>
         <Grid>
@@ -23,7 +23,8 @@
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid ItemsSource="{Binding CarList}" SelectionMode="Single"
+            <DataGrid AutomationProperties.AutomationId="grid1"
+                        ItemsSource="{Binding CarList}" SelectionMode="Single"
                       SelectedItem="{Binding SelectedCar}"/>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
             <Grid Grid.Column="2">
